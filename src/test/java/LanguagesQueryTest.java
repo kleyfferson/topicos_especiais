@@ -14,7 +14,6 @@ public class LanguagesQueryTest extends BaseTest{
                 assertThat().
                 statusCode(200);
     }
-
     @Test
     public void shouldReturnCodeaf() {
 
@@ -23,5 +22,14 @@ public class LanguagesQueryTest extends BaseTest{
         response.then().
                 assertThat().
                 body("data.language.code", is("af"));
+    }
+    @Test
+    public void shouldReturnNameAfrikaans() {
+
+        Response response = Languages.getLanguageQuery(requestSpec);
+
+        response.then().
+                assertThat().
+                body("data.language.name", is ("Afrikaans"));
     }
 }
